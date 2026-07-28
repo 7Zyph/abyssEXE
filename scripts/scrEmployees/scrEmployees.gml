@@ -4,6 +4,7 @@ function createEmployee(index)
 	//var _employeeId = index
 	var _name = oSystem.names[random(array_length(oSystem.names)-1)]
 	var _surname = oSystem.names[random(array_length(oSystem.names)-1)]
+	var _weapon = choose("fishrod","gun","pickaxe","medkit")
 	
 	var _firearms = 0
 	var _str = 0
@@ -18,7 +19,6 @@ function createEmployee(index)
 	if _ocupation == "Excavator" _str++
 	if _ocupation == "Soldier" {_firearms++; _str+=.5; _perception+=.5}
 	if _ocupation == "Medic" _medicine++
-	
 	
 	
 	var _habilities = []
@@ -44,8 +44,8 @@ function createEmployee(index)
 		surname		:	_surname,
 		ocupation	:	_ocupation,
 		habilities	:	_habilities,
-		status		:	"Alive",
-		weapon		:	-1,
+		status		:	"alive",
+		weapon		:	_weapon,
 		HP			:	_HP,
 		firearms	:	_firearms,
 		str			:	_str,

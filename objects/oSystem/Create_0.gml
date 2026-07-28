@@ -13,9 +13,73 @@ names = ["Everlee","Mateo","Leanna","Isaias","Blakely","Raylan","Maeve","Bodie",
 "Sterling","Adley","Edwin","Havens","Samir","Evie","Luke","Selah","Hayes","Selah",
 "Walker","Aubrie","Kingston","Madelyn","Jose","Aarya","Kayson","Alisson","Carl","Daisy"]
 
+weapons = 
+{
+	fishrod : 
+	{
+		itemID	: "fishrod",
+		name	: "Fishrod",
+		type	: 1,
+		atk		: 1,
+		fishpwr	: 1,
+		ammo	: 1,
+	},
+	pickaxe :
+	{
+		itemID	: "pickaxe",
+		name	: "Pickaxe",
+		type	: 2,
+		atk		: 2,
+		minepwr	: 1,
+		ammo	: 1,
+	},
+	gun:
+	{
+		itemID	: "gun",
+		name	: "Gun",
+		type	: 3,
+		atk		: 4,
+		ammo	: 8,
+	},
+	medkit:
+	{
+		itemID	: "medkit",
+		name	: "Medkit",
+		type	: 4,
+		atk		: 0,
+		healpwr	: 10,
+		ammo	: 1,
+	},
+
+}
+enemies =
+{
+	zombie:
+	{
+		enemyID		: "zombie",
+		name		: "Zombie",
+		type		: "enemy",
+		maxHP		: 10,
+		currentHP	: 10,
+		atk			: 3,
+		drops		: ["nothing","smallCrystal"]
+	},
+	demon:
+	{
+		enemyID		: "demon",
+		name		: "Demon",
+		type		: "enemy",
+		maxHP		: 15,
+		currentHP	: 15,
+		atk			: 5,
+		drops		: ["smallCrystal","smallCrystal","smallCrystal","demonPelt"]
+	},
+}
 
 
-employees = [-1,-1,-1,-1,-1,-1,-1,-1]
+
+
+employees = []
 
 for (var i = 0;i < 8;i++)
 {
