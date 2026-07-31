@@ -22,5 +22,6 @@ else
 	}
 	
 }
-
-//draw_text(10,150,expLog[array_length(expLog)-1])
+draw_text(10,130,array_length(enemies))
+draw_text(10,150,stri)
+draw_text(10,170,enemies)

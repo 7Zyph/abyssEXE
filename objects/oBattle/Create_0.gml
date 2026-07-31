@@ -14,6 +14,8 @@ Timer = 0
 
 enemies = []
 
+stri = ""
+
 tryPower = 0
 lakeType = "normal"
 fishTier = ["common","common","common","common","uncommon","uncommon","uncommon","rare","rare","ultra rare"]
