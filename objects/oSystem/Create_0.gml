@@ -81,7 +81,19 @@ enemies =
 	},
 }
 
+levels =
+{
+	mines: 
+	{
+		levelID		: "mines",
+		name		: "Mines",
+		ground		:
+		[["nothing","trash","trash","fragCrystal"]],
+	},
 
+
+
+}
 
 
 employees = []

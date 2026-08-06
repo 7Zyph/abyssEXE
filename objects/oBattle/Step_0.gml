@@ -7,6 +7,7 @@ switch oState
 			expLog[array_length(expLog)] =  "Expedition started"
 			oState = "encounter"//choose("lake","item","encounter")
 			set = 0
+			stri= "not set"
 			//enemies = []
 		}
 	break
@@ -71,6 +72,13 @@ switch oState
 	break
 	
 	case "item":
+	if Timer = 0 
+	{
+		var target = floor(random(array_length(team)))
+		expLog[array_length(expLog)] = oSystem.employees[team[target]].name + " found "
+	}
+	
+	
 	break
 	
 	case "crystal":
@@ -79,15 +87,15 @@ switch oState
 	case "encounter":
 	if !set
 	{
-		//if array_length(enemies) < 1
-		//{
-			
-			for (var i = 0; i < 1+floor(random(2));i++)
+		if !enemySet
+		{
+			for (var i = 0; i < 1+0;i++)
 			{
-				enemies[array_length(enemies)] = struct_get(oSystem.enemies,choose("zombie","demon"))
+				enemies[i] = variable_clone(struct_get(oSystem.enemies,choose("zombie","demon")))
 			}
-		//}
-		
+			enemySet = true
+		}
+		//stri = "set"
 		//expLog[array_length(expLog)] =  "Team found a " + enemies
 		
 		//battleOrder[array_length(battleOrder)] = enemies		
@@ -107,8 +115,10 @@ switch oState
 		set = true
 		charindex = 0
 	}
-	stri = string(enemies[0].HP)
-	var charsAlive = 0
+	
+
+	//stri = string(enemies[0].HP)
+	charsAlive = 0
 	for (var i = 0; i < array_length(team);i++)
 	{
 		if oSystem.employees[team[i]].status != "dead"
@@ -116,7 +126,7 @@ switch oState
 			charsAlive++
 		}
 	}
-	var enemiesAlive = 0
+	enemiesAlive = 0
 	for (var i = 0; i < array_length(enemies);i++)
 	{
 		if enemies[i].status != "dead"
@@ -129,7 +139,7 @@ switch oState
 		expLog[array_length(expLog)] =  "End of expedition - Team Died"
 		oState = "end"
 	}
-	stri = enemiesAlive
+	//stri = enemiesAlive
 	if enemiesAlive = 0 //and Timer = 0
 	{
 		set = false
@@ -142,6 +152,7 @@ switch oState
 			itemGet(loot)
 		}
 		array_resize(enemies,0)
+		enemySet = false
 		oState = "start"
 		Timer = floor(360+(180-random(360)))
 	}
@@ -157,13 +168,18 @@ switch oState
 			if enemies[battleOrder[charindex][1]].status = "alive"
 			{
 				name = enemies[battleOrder[charindex][1]].name
-				target = floor(random(array_length(battleOrder)))
-				while battleOrder[target][0] != "player" //and oSystem.employees[battleOrder[target][1]].HP = 0
+				target = min(floor(random(array_length(battleOrder))),array_length(battleOrder)-1)
+				targetSet = false
+				while !targetSet //and oSystem.employees[battleOrder[target][1]].HP = 0
 				{
-					target = floor(random(array_length(battleOrder)))
+					target = min(floor(random(array_length(battleOrder))),array_length(battleOrder)-1)
 					if battleOrder[target][0] = "player"
 					{
-						if  oSystem.employees[battleOrder[target][1]].HP <= 0 target = floor(random(array_length(battleOrder)))
+						if  oSystem.employees[battleOrder[target][1]].HP >= 0 
+						{
+							//target = min(floor(random(array_length(battleOrder))),array_length(battleOrder)-1)
+							targetSet = true
+						}
 					}
 				}
 				var damage = floor(enemies[battleOrder[charindex][1]].atk + random(enemies[battleOrder[charindex][1]].atk*.25))
@@ -208,14 +224,22 @@ switch oState
 				}
 				if !healing
 				{
-					while battleOrder[target][0] != "enemy" //and oSystem.employees[battleOrder[target][1]].HP = 0
+					targetSet = false
+					
+					while !targetSet //and oSystem.employees[battleOrder[target][1]].HP = 0
 					{
-						target = floor(random(array_length(battleOrder)))
+						target = min(floor(random(array_length(battleOrder))),array_length(battleOrder)-1)
 						if battleOrder[target][0] = "enemy"
 						{
-							if enemies[battleOrder[target][1]].HP <= 0 target = floor(random(array_length(battleOrder)))
+							if enemies[battleOrder[target][1]].HP >= 0 
+							{
+								//target = min(floor(random(array_length(battleOrder))),array_length(battleOrder)-1)
+								targetSet = true
+								
+							}
 						}
 					}
+					stri = target
 					var damage = struct_get(oSystem.weapons,oSystem.employees[battleOrder[charindex][1]].weapon).atk + oSystem.employees[battleOrder[charindex][1]].str
 					if struct_get(oSystem.weapons,oSystem.employees[battleOrder[charindex][1]].weapon).type = 3
 					{

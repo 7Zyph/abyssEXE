@@ -10,9 +10,16 @@ set = 0
 expLog=[]
 onscreenMaxText = 30
 
-Timer = 0
+Timer = 100
 
+levelLootTier = ["common","common","common","common","uncommon","uncommon","uncommon","rare","rare","ultra rare"]
+
+targetSet = false
+enemySet = false
 enemies = []
+enemiesAlive = 0
+charsAlive = 0
+encounterOver = false
 
 stri = ""
 
