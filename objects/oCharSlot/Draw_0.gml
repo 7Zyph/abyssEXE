@@ -6,6 +6,7 @@ draw_text(X_pos,15+y,oSystem.employees[slot].name +" "+ oSystem.employees[slot].
 draw_text(X_pos,25+y,oSystem.employees[slot].ocupation)
 draw_text(X_pos,35+y,oSystem.employees[slot].habilities)
 draw_text(X_pos,45+y,oSystem.employees[slot].status)
+draw_text(X_pos,60+y,oSystem.employees[slot].ammo)
 /*
 draw_text(X_pos,65+y,"HP = "+string(oSystem.employees[slot].HP))
 draw_text(X_pos,75+y,"sanity = "+string(oSystem.employees[slot].sanity))

@@ -3,6 +3,14 @@ team[3]=oSystem.employees[1].employeeId
 team[2]=oSystem.employees[2].employeeId
 team[1]=oSystem.employees[3].employeeId
 
+for (var i = 0; i<array_length(team);i++)
+{
+	if oSystem.employees[team[i]].weapon != "none"
+	{
+		oSystem.employees[team[i]].ammo = variable_clone(struct_get(oSystem.weapons,oSystem.employees[team[i]].weapon).ammo)
+	}
+}
+
 nextEvent = 0
 travelTimer = 0
 oState = "start"

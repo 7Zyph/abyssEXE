@@ -1,4 +1,7 @@
-at01 = font_add("at01.ttf",12,false,false,32,128)
+window_set_fullscreen(true)
+
+//at01 = font_add("at01.ttf",12,false,false,32,128)
+at01 = font_add("aseprite.ttf",5,false,false,32,128)
 if (font_add_get_enable_aa())
 {
     font_add_enable_aa(false);
@@ -6,6 +9,7 @@ if (font_add_get_enable_aa())
 
 randomize()
 
+//if !instance_exists(oCursor) instance_create_depth(320,180,-999,oCursor)
 
 names = ["Everlee","Mateo","Leanna","Isaias","Blakely","Raylan","Maeve","Bodie","Zoey",
 "Jagger","Nancy","Leonel","Daleyza","Trenton","Jovie","Legend","Lyric","Kason","Bridget",

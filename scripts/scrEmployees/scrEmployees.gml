@@ -48,7 +48,7 @@ function createEmployee(index)
 		weapon		:	_weapon,
 		maxHP		:	_HP,
 		HP			:	_HP,
-		ammo		:	struct_get(oSystem.weapons,_weapon).ammo,
+		ammo		:	0,//struct_get(oSystem.weapons,_weapon).ammo,
 		firearms	:	_firearms,
 		str			:	_str,
 		perception	:	_perception,

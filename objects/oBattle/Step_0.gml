@@ -5,7 +5,7 @@ switch oState
 	case "start":
 		if Timer = 0{
 			expLog[array_length(expLog)] =  "Expedition started"
-			oState = "encounter"//choose("lake","item","encounter")
+			oState = "lake"//choose("lake","item","encounter")
 			set = 0
 			stri= "not set"
 			//enemies = []
