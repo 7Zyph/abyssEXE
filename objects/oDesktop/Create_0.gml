@@ -1,0 +1,1 @@
+shortcuts = [oSystem.apps.expedition,oSystem.apps.teamapp]

@@ -3,21 +3,30 @@ if Timer>0 Timer--
 switch oState
 {
 	case "start":
-		if Timer = 0{
-			expLog[array_length(expLog)] =  "Expedition started"
-			oState = "lake"//choose("lake","item","encounter")
+		if Timer = 0
+		{
+			expLog[array_length(expLog)] =  ["Expedition started",2]
+			oState = choose("lake","encounter")
 			set = 0
 			stri= "not set"
 			//enemies = []
 		}
 	break
 	case "idle":
+		if Timer = 0
+		{
+			//expLog[array_length(expLog)] =  ["Expedition started",2]
+			oState = choose("lake","encounter")
+			set = 0
+			stri= "not set"
+			//enemies = []
+		}
 	break
 	
 	case "lake":
 	if !set
 	{
-		expLog[array_length(expLog)] =  "Team found a lake"
+		expLog[array_length(expLog)] =  ["Team found a lake",2]
 		lakeType = choose("normal","normal","normal")//,"evil")
 		Timer = floor(360+(180-random(360)))
 		tries = 0
@@ -49,11 +58,11 @@ switch oState
 					if itemTier = "ultra rare" itemGot=choose("legendaryFish","gold")
 					
 					itemGet(itemGot)
-					expLog[array_length(expLog)] = string(fisherName + " got " + itemGot)
+					expLog[array_length(expLog)] = [string(fisherName + " got " + itemGot),2]
 					//rodpower = 0
 				}
 			}
-			else expLog[array_length(expLog)] =  "..."
+			else expLog[array_length(expLog)] =  ["...",0]
 			
 		}
 		charindex++
@@ -65,7 +74,7 @@ switch oState
 	{
 		//expLog[array_length(expLog)] =  ""
 		Timer = floor(360+(180-random(360)))
-		oState = "start"//choose("item","exit","encounter","crystal")
+		oState = "idle"//choose("item","exit","encounter","crystal")
 		set = 0
 	}
 	
@@ -75,7 +84,7 @@ switch oState
 	if Timer = 0 
 	{
 		var target = floor(random(array_length(team)))
-		expLog[array_length(expLog)] = oSystem.employees[team[target]].name + " found "
+		expLog[array_length(expLog)] = [oSystem.employees[team[target]].name + " found ",2]
 	}
 	
 	
@@ -136,24 +145,24 @@ switch oState
 	}
 	if charsAlive = 0 //and Timer = 0
 	{
-		expLog[array_length(expLog)] =  "End of expedition - Team Died"
+		expLog[array_length(expLog)] =  ["End of expedition - Team Died",1]
 		oState = "end"
 	}
 	//stri = enemiesAlive
 	if enemiesAlive = 0 //and Timer = 0
 	{
 		set = false
-		expLog[array_length(expLog)] =  "All enemies Defeated"
+		expLog[array_length(expLog)] =  ["All enemies Defeated",2]
 		var loot
 		for (var i = 0; i < array_length(enemies);i++)
 		{
 			loot = enemies[i].drops[floor(random(array_length(enemies[i].drops)))]
-			expLog[array_length(expLog)] =  "you found " + loot
+			expLog[array_length(expLog)] =  ["you found " + loot,2]
 			itemGet(loot)
 		}
 		array_resize(enemies,0)
 		enemySet = false
-		oState = "start"
+		oState = "idle"
 		Timer = floor(360+(180-random(360)))
 	}
 	if charindex > array_length(battleOrder)-1 charindex = 0
@@ -189,10 +198,10 @@ switch oState
 				if oSystem.employees[battleOrder[target][1]].HP = 0
 				{
 					oSystem.employees[battleOrder[target][1]].status = "dead"
-					expLog[array_length(expLog)] = name + " killed " + oSystem.employees[battleOrder[target][1]].name
+					expLog[array_length(expLog)] = [name + " killed " + oSystem.employees[battleOrder[target][1]].name,1]
 					//array_delete(battleOrder,target,1)
 				}
-				else expLog[array_length(expLog)] = name + " attacked " + oSystem.employees[battleOrder[target][1]].name
+				else expLog[array_length(expLog)] = [name + " attacked " + oSystem.employees[battleOrder[target][1]].name,0]
 				Timer = floor(180+random(180))
 			}
 			charindex++
@@ -217,7 +226,7 @@ switch oState
 					{
 						var heal = struct_get(oSystem.weapons,oSystem.employees[battleOrder[charindex][1]].weapon).healpwr*(1+oSystem.employees[battleOrder[charindex][1]].medicine)
 						oSystem.employees[team[leastHP]].HP = min(oSystem.employees[team[leastHP]].HP+(heal),oSystem.employees[team[leastHP]].maxHP)
-						expLog[array_length(expLog)] = name + " healed " + oSystem.employees[team[leastHP]].name
+						expLog[array_length(expLog)] = [name + " healed " + oSystem.employees[team[leastHP]].name,0]
 						Timer = floor(180+random(180))
 					}
 					else healing = false
@@ -251,7 +260,7 @@ switch oState
 					}
 					enemies[battleOrder[target][1]].HP = max(enemies[battleOrder[target][1]].HP-damage,0)
 					if enemies[battleOrder[target][1]].HP <= 0 enemies[battleOrder[target][1]].status = "dead"
-					expLog[array_length(expLog)] = enemies[battleOrder[target][1]].status = "dead" ? name + " killed " + enemies[battleOrder[target][1]].name : name + " attacked " + enemies[battleOrder[target][1]].name
+					expLog[array_length(expLog)] = enemies[battleOrder[target][1]].status = "dead" ? [name + " killed " + enemies[battleOrder[target][1]].name,1] : [name + " attacked " + enemies[battleOrder[target][1]].name,0]
 					Timer = floor(180+random(180))
 				}
 			}
@@ -262,6 +271,6 @@ switch oState
 	break
 	
 	case "end":
-	expLog[array_length(expLog)] = "End of log"
+	expLog[array_length(expLog)] = ["End of log",2]
 	break
 }

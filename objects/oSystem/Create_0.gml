@@ -9,6 +9,35 @@ if (font_add_get_enable_aa())
 
 randomize()
 
+currentWindow = "desktop"
+apps= 
+{
+	expedition:
+	{
+		posX : 16,
+		posY : 16,
+		name : "Expedition.exe",
+		window: "expedition",
+		status: "closed",
+		desktopIcon: sExpeditionDesktopIcon,
+		taskbarIcon: sExpeditionTaskbarIcon,
+		
+	},
+		teamapp:
+	{
+		posX : 16,
+		posY : 48,
+		name : "Teams.exe",
+		window: "teams",
+		status: "closed",
+		desktopIcon: sExpeditionDesktopIcon,
+		taskbarIcon: sTeamTaskbarIcon,
+	}
+	
+	
+}
+
+colors = [c_white,c_red,c_yellow,c_black]
 //if !instance_exists(oCursor) instance_create_depth(320,180,-999,oCursor)
 
 names = ["Everlee","Mateo","Leanna","Isaias","Blakely","Raylan","Maeve","Bodie","Zoey",
@@ -107,3 +136,4 @@ for (var i = 0;i < 8;i++)
 	createEmployee(i)
 }
  
+

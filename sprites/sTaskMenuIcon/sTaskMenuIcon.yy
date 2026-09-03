@@ -44,8 +44,8 @@
   },
   "origin":0,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"taskbar",
+    "path":"folders/Sprites/taskbar.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
