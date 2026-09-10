@@ -37,6 +37,7 @@
     {"id":{"name":"oDesktop","path":"objects/oDesktop/oDesktop.yy",},},
     {"id":{"name":"oSystem","path":"objects/oSystem/oSystem.yy",},},
     {"id":{"name":"oTaskbar","path":"objects/oTaskbar/oTaskbar.yy",},},
+    {"id":{"name":"oTeams","path":"objects/oTeams/oTeams.yy",},},
     {"id":{"name":"rmDesktop","path":"rooms/rmDesktop/rmDesktop.yy",},},
     {"id":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},},
     {"id":{"name":"scrEmployees","path":"scripts/scrEmployees/scrEmployees.yy",},},

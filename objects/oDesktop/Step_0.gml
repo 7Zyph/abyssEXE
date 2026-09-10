@@ -12,6 +12,7 @@ if oSystem.currentWindow = "desktop"
 }
 if oSystem.currentWindow != "desktop" 
 {
+	var app = struct_get(oSystem.apps,oSystem.currentWindow)
 	if point_in_rectangle(oCursor.x,oCursor.y,616,0,626,10) and oCursor.click
 	{
 		oSystem.currentWindow = "desktop" 
@@ -19,7 +20,7 @@ if oSystem.currentWindow != "desktop"
 	
 	if point_in_rectangle(oCursor.x,oCursor.y,628,0,638,10) and oCursor.click
 	{
-		struct_get(oSystem.apps,oSystem.currentWindow).status = "closed"
+		app.status = "closed"
 		oSystem.currentWindow = "desktop" 
 	}
 }

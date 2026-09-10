@@ -9,3 +9,4 @@ if oSystem.currentWindow = "desktop"
 		//draw_text(10,10,"zap")
 	}
 }
+//draw_text(10,10,oSystem.currentWindow)

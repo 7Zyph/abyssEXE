@@ -2,6 +2,9 @@ if Timer>0 Timer--
 
 switch oState
 {
+	case "select":
+	break
+	
 	case "start":
 		if Timer = 0
 		{

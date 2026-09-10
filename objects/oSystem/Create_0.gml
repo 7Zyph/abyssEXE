@@ -12,6 +12,11 @@ randomize()
 currentWindow = "desktop"
 apps= 
 {
+	
+	desktop:
+	{
+		status:"closed"
+	},
 	expedition:
 	{
 		posX : 16,
@@ -28,7 +33,7 @@ apps=
 		posX : 16,
 		posY : 48,
 		name : "Teams.exe",
-		window: "teams",
+		window: "teamapp",
 		status: "closed",
 		desktopIcon: sExpeditionDesktopIcon,
 		taskbarIcon: sTeamTaskbarIcon,

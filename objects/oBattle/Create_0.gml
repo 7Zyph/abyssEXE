@@ -3,6 +3,8 @@ team[3]=oSystem.employees[1].employeeId
 team[2]=oSystem.employees[2].employeeId
 team[1]=oSystem.employees[3].employeeId
 
+
+
 for (var i = 0; i<array_length(team);i++)
 {
 	if oSystem.employees[team[i]].weapon != "none"
@@ -13,7 +15,7 @@ for (var i = 0; i<array_length(team);i++)
 
 nextEvent = 0
 travelTimer = 0
-oState = "start"
+oState = "select"
 set = 0
 expLog=[]
 onscreenMaxText = 30
