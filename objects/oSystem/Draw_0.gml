@@ -1,9 +1,13 @@
 draw_set_font(at01)
-	X_pos = 10
-	Y_pos = 0
+draw_text(10,300,items.crystalShard.history)
+draw_text(10,310,items.crystalShard.price)
+
+
 
 /*for (var i = 0;i < array_length(employees);i++)
 {
+	X_pos = 10
+	Y_pos = 0
 
 	if i == 4
 	{

@@ -1,0 +1,24 @@
+if stckTimer > 0 stckTimer-- 
+// stock market
+if stckTimer = 0
+{
+	for (var i = 0; i<array_length(stckItems);i++)
+	{
+		var item = stckItems[i]
+		if item.unlocked
+		{
+			if !array_length(item.history)
+			{
+				for (var j = 0; j<10; j++)
+				{
+					item.price = item.price + (item.vol*(item.chance+((item.stckbase-item.stck)/item.stckbase)-random(2)))
+					item.history[array_length(item.history)] = item.price
+				}
+			}
+			item.price = item.price + (item.vol*(item.chance+((item.stckbase-item.stck)/item.stckbase)-random(2)))
+			item.history[array_length(item.history)] = item.price
+			array_delete(item.history,0,1)
+		}
+	}
+	stckTimer = 60
+}

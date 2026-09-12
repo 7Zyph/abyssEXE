@@ -27,7 +27,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2026.100.0.1142",
+    "IDEVersion":"2026.100.0.1149",
   },
   "name":"AbyssEXE",
   "resources":[
@@ -48,6 +48,7 @@
     {"id":{"name":"sCursor","path":"sprites/sCursor/sCursor.yy",},},
     {"id":{"name":"sExpeditionDesktopIcon","path":"sprites/sExpeditionDesktopIcon/sExpeditionDesktopIcon.yy",},},
     {"id":{"name":"sExpeditionTaskbarIcon","path":"sprites/sExpeditionTaskbarIcon/sExpeditionTaskbarIcon.yy",},},
+    {"id":{"name":"sPlaceholder","path":"sprites/sPlaceholder/sPlaceholder.yy",},},
     {"id":{"name":"sTaskbar","path":"sprites/sTaskbar/sTaskbar.yy",},},
     {"id":{"name":"sTaskMenuIcon","path":"sprites/sTaskMenuIcon/sTaskMenuIcon.yy",},},
     {"id":{"name":"sTeamTaskbarIcon","path":"sprites/sTeamTaskbarIcon/sTeamTaskbarIcon.yy",},},

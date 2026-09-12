@@ -51,6 +51,95 @@ names = ["Everlee","Mateo","Leanna","Isaias","Blakely","Raylan","Maeve","Bodie",
 "Sterling","Adley","Edwin","Havens","Samir","Evie","Luke","Selah","Hayes","Selah",
 "Walker","Aubrie","Kingston","Madelyn","Jose","Aarya","Kayson","Alisson","Carl","Daisy"]
 
+
+stckTimer = 0
+
+items = 
+{
+	crystalfrag:
+	{
+		name	: "Crystal Fragment",
+		desc	: "",
+		invImage: sPlaceholder,
+		unlocked: true,
+		qtd		: 0,
+		stckbase: 100,
+		stck	: 100,
+		price	: 50,
+		minValue: 10,
+		maxValue: 100,
+		chance	: 1,
+		vol		: 10,
+		history : []
+	},
+	crystalShard:
+	{
+		name	: "Crystal Shard",
+		desc	: "",
+		invImage: sPlaceholder,
+		unlocked: true,
+		qtd		: 0,
+		stckbase: 100,
+		stck	: 100,
+		price	: 50,
+		minValue: 10,
+		maxValue: 100,
+		chance	: 1,
+		vol		: 10,
+		history : []
+	},
+	crystalchunk:
+	{
+		name	: "Crystal Chunk",
+		desc	: "",
+		invImage: sPlaceholder,
+		unlocked: true,
+		qtd		: 0,
+		stckbase: 100,
+		stck	: 100,
+		price	: 50,
+		minValue: 10,
+		maxValue: 100,
+		chance	: 1,
+		vol		: 10,
+		history : []
+	},
+	crystal:
+	{
+		name	: "Crystal",
+		desc	: "",
+		invImage: sPlaceholder,
+		unlocked: false,
+		qtd		: 0,
+		stckbase: 100,
+		stck	: 100,
+		price	: 50,
+		minValue: 10,
+		maxValue: 100,
+		chance	: 1,
+		vol		: 10,
+		history : []
+	},
+	greatTreeLeaf:
+	{
+		name	: "Leaf of the Great Tree",
+		desc	: "",
+		invImage: sPlaceholder,
+		unlocked: false,
+		qtd		: 0,
+		stckbase: 100,
+		stck	: 100,
+		price	: 50,
+		minValue: 10,
+		maxValue: 100,
+		chance	: 1,
+		vol		: 10,
+		history : []
+	},
+}
+stckItems= [items.crystalfrag,items.crystalShard,items.crystalchunk,items.crystal,items.greatTreeLeaf]
+
+
 weapons = 
 {
 	fishrod : 
