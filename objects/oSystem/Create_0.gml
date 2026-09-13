@@ -37,6 +37,16 @@ apps=
 		status: "closed",
 		desktopIcon: sExpeditionDesktopIcon,
 		taskbarIcon: sTeamTaskbarIcon,
+	},
+		stockmarket:
+	{
+		posX : 16,
+		posY : 80,
+		name : "Stock_Market.exe",
+		window: "stockmarket",
+		status: "closed",
+		desktopIcon: sExpeditionDesktopIcon,
+		taskbarIcon: sStockTaskbarIcon,
 	}
 	
 	

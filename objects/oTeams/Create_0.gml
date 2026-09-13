@@ -1,3 +1,6 @@
+category=
+[[]]
+
 selected = -1
 X_pos  = 3
 Y_pos  = 24

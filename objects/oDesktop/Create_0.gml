@@ -1,1 +1,1 @@
-shortcuts = [oSystem.apps.expedition,oSystem.apps.teamapp]
+shortcuts = [oSystem.apps.expedition,oSystem.apps.teamapp,oSystem.apps.stockmarket]
