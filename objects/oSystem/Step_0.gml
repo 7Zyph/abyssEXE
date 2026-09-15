@@ -1,4 +1,5 @@
 if stckTimer > 0 stckTimer-- 
+if stckBuyTimer > 0 stckBuyTimer-- 
 // stock market
 if stckTimer = 0
 {
@@ -23,4 +24,17 @@ if stckTimer = 0
 		}
 	}
 	stckTimer = 60
+}
+
+if stckBuyTimer = 0 
+{
+	for (var i = 0; i<array_length(stckItems);i++)
+	{
+		var item = stckItems[i]
+		if item.unlocked
+		{
+			item.stck = round(item.stck+item.vol*((((item.price-item.minValue)/(item.maxValue-item.minValue))-.5)*2))
+		}
+	}
+	stckBuyTimer = 60
 }

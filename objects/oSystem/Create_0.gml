@@ -63,6 +63,7 @@ names = ["Everlee","Mateo","Leanna","Isaias","Blakely","Raylan","Maeve","Bodie",
 
 
 stckTimer = 0
+stckBuyTimer = 0
 
 items = 
 {

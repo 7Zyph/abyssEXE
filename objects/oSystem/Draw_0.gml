@@ -1,6 +1,6 @@
 draw_set_font(at01)
 draw_text(10,300,items.crystalShard.history)
-draw_text(10,310,items.crystalShard.price)
+draw_text(10,310,items.crystalShard.stck)
 
 
 
