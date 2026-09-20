@@ -1,3 +1,4 @@
+if global.timer>0 global.timer --
 if stckTimer > 0 stckTimer-- 
 if stckBuyTimer > 0 stckBuyTimer-- 
 // stock market

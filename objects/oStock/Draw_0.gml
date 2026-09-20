@@ -35,3 +35,4 @@ if oSystem.currentWindow = "stockmarket"
 		}
 	}
 }
+draw_text(10,350,oCursor.timer)

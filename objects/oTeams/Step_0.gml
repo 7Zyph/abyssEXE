@@ -2,7 +2,7 @@ if oSystem.currentWindow = "teamapp"
 {
 	for (var i=0; i<array_length(oSystem.employees);i++)
 	{
-		if point_in_rectangle(oCursor.x,oCursor.y,X_pos,Y_pos+height*i,X_pos+width,(Y_pos+height)+height*i) and oCursor.click
+		if point_in_rectangle(oCursor.x,oCursor.y,X_pos,Y_pos+height*i,X_pos+width,(Y_pos+height)+height*i) and oCursor.click and !global.timer
 		{
 			selected = selected = i? -1: i
 		}

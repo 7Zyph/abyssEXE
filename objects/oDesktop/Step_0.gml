@@ -5,8 +5,10 @@ if oSystem.currentWindow = "desktop"
 		var app = shortcuts[i]
 		if point_in_rectangle(oCursor.x,oCursor.y,app.posX,app.posY,app.posX+16,app.posY+16) and oCursor.click
 		{
+			global.timer = 15
 			if app.status != "open" app.status = "open"
 			oSystem.currentWindow = app.window
+
 		}
 	}
 }

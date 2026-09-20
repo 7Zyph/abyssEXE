@@ -1,5 +1,5 @@
 window_set_fullscreen(true)
-
+global.timer = 0
 //at01 = font_add("at01.ttf",12,false,false,32,128)
 at01 = font_add("aseprite.ttf",5,false,false,32,128)
 if (font_add_get_enable_aa())
