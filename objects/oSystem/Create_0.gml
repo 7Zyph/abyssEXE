@@ -153,10 +153,20 @@ stckItems= [items.crystalfrag,items.crystalShard,items.crystalchunk,items.crysta
 
 weapons = 
 {
+		unarmed : 
+	{
+		itemID	: "unarmed",
+		name	: "Unarmed",
+		qtd		: 99,
+		type	: 0,
+		atk		: 1,
+		ammo	: 1,
+	},
 	fishrod : 
 	{
 		itemID	: "fishrod",
 		name	: "Fishrod",
+		qtd		: 1,
 		type	: 1,
 		atk		: 1,
 		fishpwr	: 1,
@@ -166,6 +176,7 @@ weapons =
 	{
 		itemID	: "pickaxe",
 		name	: "Pickaxe",
+		qtd		: 1,
 		type	: 2,
 		atk		: 2,
 		minepwr	: 1,
@@ -175,6 +186,7 @@ weapons =
 	{
 		itemID	: "gun",
 		name	: "Gun",
+		qtd		: 2,
 		type	: 3,
 		rAtk	: 4,
 		atk		: 1,
@@ -184,6 +196,7 @@ weapons =
 	{
 		itemID	: "medkit",
 		name	: "Medkit",
+		qtd		: 1,
 		type	: 4,
 		atk		: 1,
 		healpwr	: 5,
@@ -191,6 +204,7 @@ weapons =
 	},
 
 }
+weaponsList = [weapons.fishrod,weapons.gun,weapons.medkit,weapons.pickaxe, weapons.unarmed]
 enemies =
 {
 	zombie:

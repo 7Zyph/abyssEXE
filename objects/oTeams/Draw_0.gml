@@ -24,4 +24,27 @@ if oSystem.currentWindow = "teamapp"
 		draw_text(text_x,40+text_y,oSystem.employees[selected].status)
 		draw_text(text_x,50+text_y,"ammo : " +string(oSystem.employees[selected].ammo))
 	}
+	
+	if selected != -1
+	{
+		
+		draw_sprite_stretched(sBox,0,selectionBox_x-1,selectionBox_y,selectionBox_w+3,selectionBox_h)
+		draw_set_colour(oSystem.colors[0])
+		draw_text(3+selectionBox_x,2+selectionBox_y,struct_get(oSystem.weapons,oSystem.employees[selected].weapon).name)
+		
+		if selectionBoxOpen
+		{
+			draw_sprite_stretched(sBox,0,selectionBox_x,10+selectionBox_y,selectionBox_w,selectionBox_h*totalWeapons)
+			var j = 0
+			for (var i = 0; i<array_length(oSystem.weaponsList);i++)
+			{
+				if oSystem.weaponsList[i].qtd > 0 
+				{
+				draw_text(2+selectionBox_x,12+selectionBox_y+selectionBox_h*j,oSystem.weaponsList[i].name)
+				j++
+				}
+
+			}
+		}
+	}
 }

@@ -42,7 +42,6 @@
     {"id":{"name":"rmDesktop","path":"rooms/rmDesktop/rmDesktop.yy",},},
     {"id":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},},
     {"id":{"name":"scrEmployees","path":"scripts/scrEmployees/scrEmployees.yy",},},
-    {"id":{"name":"scrExpeditions","path":"scripts/scrExpeditions/scrExpeditions.yy",},},
     {"id":{"name":"scrItems","path":"scripts/scrItems/scrItems.yy",},},
     {"id":{"name":"sBattleBG","path":"sprites/sBattleBG/sBattleBG.yy",},},
     {"id":{"name":"sBox","path":"sprites/sBox/sBox.yy",},},

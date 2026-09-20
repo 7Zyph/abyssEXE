@@ -4,7 +4,7 @@ function createEmployee(index)
 	//var _employeeId = index
 	var _name = oSystem.names[random(array_length(oSystem.names)-1)]
 	var _surname = oSystem.names[random(array_length(oSystem.names)-1)]
-	var _weapon = choose("fishrod","gun","pickaxe","medkit")
+	var _weapon = "unarmed"//choose("fishrod","gun","pickaxe","medkit")
 	
 	var _firearms = 0
 	var _str = 0
