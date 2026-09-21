@@ -9,6 +9,7 @@ if (font_add_get_enable_aa())
 
 randomize()
 
+global.money = 9999999
 currentWindow = "desktop"
 apps= 
 {
@@ -74,8 +75,8 @@ items =
 		invImage: sPlaceholder,
 		unlocked: true,
 		qtd		: 0,
-		stckbase: 100,
-		stck	: 100,
+		stckbase: 1000,
+		stck	: 1000,
 		price	: 50,
 		minValue: 10,
 		maxValue: 100,
@@ -90,8 +91,8 @@ items =
 		invImage: sPlaceholder,
 		unlocked: true,
 		qtd		: 0,
-		stckbase: 100,
-		stck	: 100,
+		stckbase: 1000,
+		stck	: 1000,
 		price	: 50,
 		minValue: 10,
 		maxValue: 100,
@@ -106,8 +107,8 @@ items =
 		invImage: sPlaceholder,
 		unlocked: true,
 		qtd		: 0,
-		stckbase: 100,
-		stck	: 100,
+		stckbase: 1000,
+		stck	: 1000,
 		price	: 50,
 		minValue: 10,
 		maxValue: 100,
@@ -122,8 +123,8 @@ items =
 		invImage: sPlaceholder,
 		unlocked: false,
 		qtd		: 0,
-		stckbase: 100,
-		stck	: 100,
+		stckbase: 1000,
+		stck	: 1000,
 		price	: 50,
 		minValue: 10,
 		maxValue: 100,

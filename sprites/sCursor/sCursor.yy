@@ -1,10 +1,10 @@
 {
   "$GMSprite":"v2",
   "%Name":"sCursor",
-  "bboxMode":0,
-  "bbox_bottom":7,
+  "bboxMode":2,
+  "bbox_bottom":1,
   "bbox_left":0,
-  "bbox_right":7,
+  "bbox_right":1,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,

@@ -34,5 +34,64 @@ if oSystem.currentWindow = "stockmarket"
 			draw_line_width(graph_x+10*i,graph_y-value_normalized1,graph_x+10*(i+1),graph_y-value_normalized2,1)
 		}
 	}
+	
+	if selected !=-1
+	{
+		draw_set_colour(oSystem.colors[0])
+		var item = items[category][selected]
+		var val = "" 
+		for (var i=0; i<array_length(buy_val)+1;i++)
+		{
+			var qtd = 0
+			if i != array_length(buy_val)
+			{
+				qtd = buy_val[i]
+				val = string(qtd)
+			}
+			else 
+			{
+				qtd = item.stck
+				val = "all"
+			}
+			
+			if global.money > item.price*qtd
+			{
+				draw_sprite_stretched(sBox,0,buy_x+(10+buy_w)*i,buy_y,buy_w,buy_h)
+				draw_text(3+buy_x+(10+buy_w)*i,buy_y+3,val)
+			}
+			
+			
+		}
+	}
+	if selected !=-1
+	{
+		draw_set_colour(oSystem.colors[0])
+		var item = items[category][selected]
+		var val = "" 
+		for (var i=0; i<array_length(buy_val)+1;i++)
+		{
+			var qtd = 0
+			if i != array_length(buy_val)
+			{
+				qtd = buy_val[i]
+				val = string(qtd)
+			}
+			else 
+			{
+				qtd = item.qtd
+				val = "all"
+			}
+			
+			if item.qtd >= qtd and item.qtd>0
+			{
+				draw_sprite_stretched(sBox,0,buy_x+(10+buy_w)*i,buy_y+15,buy_w,buy_h)
+				draw_text(3+buy_x+(10+buy_w)*i,buy_y+18,val)
+			}
+			
+			
+		}
+	}
 }
-draw_text(10,350,oCursor.timer)
+draw_text(10,300,global.money)
+draw_text(10,310,oSystem.items.crystalfrag.stck)
+draw_text(10,320,oSystem.items.crystalfrag.qtd)

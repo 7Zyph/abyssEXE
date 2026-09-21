@@ -14,12 +14,12 @@ if stckTimer = 0
 				for (var j = 0; j<10; j++)
 				{
 					item.price = item.price + (item.vol*(item.chance+((item.stckbase-item.stck)/item.stckbase)-random(2)))
-					item.price = clamp(item.price,item.minValue,item.maxValue)
+					item.price = max(item.price,item.minValue)
 					item.history[array_length(item.history)] = item.price
 				}
 			}
 			item.price = item.price + (item.vol*(item.chance+((item.stckbase-item.stck)/item.stckbase)-random(2)))
-			item.price = clamp(item.price,item.minValue,item.maxValue)
+			item.price = max(item.price,item.minValue)
 			item.history[array_length(item.history)] = item.price
 			array_delete(item.history,0,1)
 		}
