@@ -22,14 +22,20 @@ if oSystem.currentWindow = "stockmarket"
 		var graph_y = 200
 		var graph_size = 100
 		draw_sprite_stretched(sBox,0,graph_x-2,graph_y-graph_size,200,graph_size)
+		
+		var maxValue = 0
+		for (var i = 0;i< array_length(items[category][selected].history);i++)
+		{
+			if maxValue <items[category][selected].history[i] maxValue = max(items[category][selected].history[i],items[category][selected].maxValue)
+		}
+		
 		for (var i = 0; i < array_length(items[category][selected].history)-1;i++)
 		{
 
 			if  items[category][selected].history[i] < items[category][selected].history[i+1] draw_set_colour(oSystem.colors[0])
 			else draw_set_colour(oSystem.colors[1])
-			
-			var value_normalized1 = graph_size*(items[category][selected].history[i]-items[category][selected].minValue)/(items[category][selected].maxValue-items[category][selected].minValue)
-			var value_normalized2 = graph_size*(items[category][selected].history[i+1]-items[category][selected].minValue)/(items[category][selected].maxValue-items[category][selected].minValue)
+			var value_normalized1 = graph_size*(items[category][selected].history[i]-items[category][selected].minValue)/((maxValue+maxValue*.25)-items[category][selected].minValue)
+			var value_normalized2 = graph_size*(items[category][selected].history[i+1]-items[category][selected].minValue)/((maxValue+maxValue*.25)-items[category][selected].minValue)
 			
 			draw_line_width(graph_x+10*i,graph_y-value_normalized1,graph_x+10*(i+1),graph_y-value_normalized2,1)
 		}

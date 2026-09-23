@@ -1,7 +1,7 @@
-team[0]=oSystem.employees[0].employeeId
-team[3]=oSystem.employees[1].employeeId
-team[2]=oSystem.employees[2].employeeId
-team[1]=oSystem.employees[3].employeeId
+team[0]=-1
+team[3]=-1
+team[2]=-1
+team[1]=-1
 
 
 

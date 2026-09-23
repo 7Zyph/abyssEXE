@@ -9,6 +9,7 @@ if (font_add_get_enable_aa())
 
 randomize()
 
+global.onMessage = false
 global.money = 9999999
 currentWindow = "desktop"
 apps= 
@@ -247,6 +248,8 @@ levels =
 
 
 }
+
+
 
 
 employees = []
