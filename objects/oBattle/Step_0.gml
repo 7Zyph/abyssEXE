@@ -1,9 +1,36 @@
+for (var i=0;i<array_length(team);i++)
+{
+	if team[i] != -1 validTeam = true
+}
+
 if Timer>0 Timer--
 
 switch oState
 {
 	case "select":
-		
+		for (var i = 0;i<array_length(areas);i++)
+		{
+			if areas[i].unlocked
+			{
+				if point_in_rectangle(oCursor.x,oCursor.y,areaBoxX,areaBoxY+areaBoxH*i,areaBoxX+areaBoxW,areaBoxY+areaBoxH+(areaBoxH*i)) and oCursor.click and !global.timer
+				{
+					selectedArea = i
+				}
+			}
+		}
+		if selectedArea != -1
+		{
+			if point_in_rectangle(oCursor.x,oCursor.y,startButtonX,startButtonY,startButtonX+startButtonW,startButtonY+startButtonH) and oCursor.click and !global.timer
+			{
+				if validTeam
+				{
+					area = variable_clone(areas[selectedArea])
+					oState = "start"
+					timer = 30
+				}
+				else message_create("Invalid Team :3")
+			}
+		}
 		
 	break
 	
@@ -11,19 +38,19 @@ switch oState
 		if Timer = 0
 		{
 			expLog[array_length(expLog)] =  ["Expedition started",2]
-			oState = choose("lake","encounter")
+			oState = "idle"
 			set = 0
-			stri= "not set"
-			//enemies = []
+			global.expedition = true
+			
 		}
 	break
 	case "idle":
 		if Timer = 0
 		{
 			//expLog[array_length(expLog)] =  ["Expedition started",2]
-			oState = choose("lake","encounter")
+			oState = area.eventPool[floor(random(array_length(area.eventPool)))]
 			set = 0
-			stri= "not set"
+			//stri= "not set"
 			//enemies = []
 		}
 	break
@@ -89,13 +116,60 @@ switch oState
 	if Timer = 0 
 	{
 		var target = floor(random(array_length(team)))
-		expLog[array_length(expLog)] = [oSystem.employees[team[target]].name + " found ",2]
+		if team[target] !=-1 expLog[array_length(expLog)] = [oSystem.employees[team[target]].name + " found ",2]
+		oState = "idle"
 	}
 	
 	
 	break
 	
 	case "crystal":
+	if !set and !crystalEvent
+	{
+		if array_length(miners)
+		{
+			miningOrder = miners
+		}
+		else 
+		{
+			for (var i=0;i<array_length(team);i++)
+			{
+				if team[i] != -1 miningOrder[array_length(miningOrder)]=team[i]
+			}
+		}
+		
+		
+		crystalIndex = 0
+		crystalHP = 5
+		crystalEvent = true
+		set = true
+	}
+	
+	if Timer = 0 
+	{ 
+		
+		var weapon = struct_get(oSystem.weapons,oSystem.employees[miningOrder[crystalIndex]].weapon)
+		var dmg = weapon.atk +oSystem.employees[miningOrder[crystalIndex]].str
+		if weapon.type = 1
+		{
+			dmg += weapon.minepwr
+		}
+		if random(100) < 10 
+		{
+			oState = "encounter"
+			set = false
+		}
+		crystalHP -=dmg
+		crystalIndex++
+		if crystalIndex > array_length(miningOrder)-1 crystalIndex = 0
+		if crystalHP<=0 
+		{
+			oState = "idle"
+			crystalEvent = false
+			set = false
+		}
+		timer = 30
+	}
 	break
 	
 	case "encounter":
@@ -105,7 +179,7 @@ switch oState
 		{
 			for (var i = 0; i < 1+0;i++)
 			{
-				enemies[i] = variable_clone(struct_get(oSystem.enemies,choose("zombie","demon")))
+				enemies[i] = variable_clone(area.enemiesPool[random(array_length(area.enemiesPool))])
 			}
 			enemySet = true
 		}
@@ -120,8 +194,9 @@ switch oState
 		
 		for (var i =0; i < array_length(team);i++)
 		{
-			battleOrder[array_length(battleOrder)] = ["player",team[i]]
+			if team[i] !=-1 battleOrder[array_length(battleOrder)] = ["player",team[i]]
 		}
+		
 		battleOrder = array_shuffle(battleOrder)
 		
 		Timer = floor(360+(180-random(360)))
@@ -135,9 +210,12 @@ switch oState
 	charsAlive = 0
 	for (var i = 0; i < array_length(team);i++)
 	{
-		if oSystem.employees[team[i]].status != "dead"
-		{
-			charsAlive++
+		if team[i] != -1
+		{	
+			if oSystem.employees[team[i]].status != "dead"
+			{
+				charsAlive++
+			}
 		}
 	}
 	enemiesAlive = 0
@@ -162,8 +240,11 @@ switch oState
 		for (var i = 0; i < array_length(enemies);i++)
 		{
 			loot = enemies[i].drops[floor(random(array_length(enemies[i].drops)))]
-			expLog[array_length(expLog)] =  ["you found " + loot,2]
-			itemGet(loot)
+			if loot != -1
+			{
+				expLog[array_length(expLog)] =  ["you found " + loot.name,2]
+				itemGet(loot)
+			}
 		}
 		array_resize(enemies,0)
 		enemySet = false
@@ -216,10 +297,11 @@ switch oState
 		{
 			name = oSystem.employees[battleOrder[charindex][1]].name
 			target = floor(random(array_length(battleOrder)))
+			var weapon = struct_get(oSystem.weapons,oSystem.employees[battleOrder[charindex][1]].weapon)
 			if oSystem.employees[battleOrder[charindex][1]].status = "alive" 
 			{
 				var healing = false
-				if struct_get(oSystem.weapons,oSystem.employees[battleOrder[charindex][1]].weapon).type = 4 healing = true
+				if weapon.type = 4 healing = true
 				if healing
 				{
 					var leastHP = 0
@@ -229,7 +311,7 @@ switch oState
 					}
 					if oSystem.employees[team[leastHP]].HP < (oSystem.employees[team[leastHP]].maxHP)*.6 
 					{
-						var heal = struct_get(oSystem.weapons,oSystem.employees[battleOrder[charindex][1]].weapon).healpwr*(1+oSystem.employees[battleOrder[charindex][1]].medicine)
+						var heal = weapon.healpwr*(1+oSystem.employees[battleOrder[charindex][1]].medicine)
 						oSystem.employees[team[leastHP]].HP = min(oSystem.employees[team[leastHP]].HP+(heal),oSystem.employees[team[leastHP]].maxHP)
 						expLog[array_length(expLog)] = [name + " healed " + oSystem.employees[team[leastHP]].name,0]
 						Timer = floor(180+random(180))
@@ -254,12 +336,12 @@ switch oState
 						}
 					}
 					stri = target
-					var damage = struct_get(oSystem.weapons,oSystem.employees[battleOrder[charindex][1]].weapon).atk + oSystem.employees[battleOrder[charindex][1]].str
-					if struct_get(oSystem.weapons,oSystem.employees[battleOrder[charindex][1]].weapon).type = 3
+					var damage = weapon.atk + oSystem.employees[battleOrder[charindex][1]].str
+					if weapon.type = 3
 					{
 						if oSystem.employees[battleOrder[charindex][1]].ammo > 0
 						{
-							damage = struct_get(oSystem.weapons,oSystem.employees[battleOrder[charindex][1]].weapon).rAtk + oSystem.employees[battleOrder[charindex][1]].firearms
+							damage = weapon.rAtk + oSystem.employees[battleOrder[charindex][1]].firearms
 							oSystem.employees[battleOrder[charindex][1]].ammo--
 						}
 					}
@@ -276,6 +358,7 @@ switch oState
 	break
 	
 	case "end":
-	expLog[array_length(expLog)] = ["End of log",2]
+	if global.expedition expLog[array_length(expLog)] = ["End of log",2]
+	global.expedition=false
 	break
 }

@@ -69,10 +69,28 @@ stckBuyTimer = 0
 
 items = 
 {
+	trash:
+	{
+		name	: "Trash",
+		desc	: "Trash, does not hold much value",
+		unlocked: false,
+		stck	: 0,
+		qtd		: 0,
+		price	: 5
+	},
+	demonPelt:
+	{
+		name	: "Demon Pelt",
+		desc	: "The skin of a common abyss creature",
+		unlocked: false,
+		stck	: 0,
+		qtd		: 0,
+		price	: 20
+	},
 	crystalfrag:
 	{
-		name	: "Crystal Fragment",
-		desc	: "",
+		name	: "Crystal fragment",
+		desc	: "Shattered piece of an abyss crystal",
 		invImage: sPlaceholder,
 		unlocked: true,
 		qtd		: 0,
@@ -88,7 +106,7 @@ items =
 	crystalShard:
 	{
 		name	: "Crystal Shard",
-		desc	: "",
+		desc	: "Broken piece of an abyss crystal",
 		invImage: sPlaceholder,
 		unlocked: true,
 		qtd		: 0,
@@ -104,7 +122,7 @@ items =
 	crystalchunk:
 	{
 		name	: "Crystal Chunk",
-		desc	: "",
+		desc	: "Big",
 		invImage: sPlaceholder,
 		unlocked: true,
 		qtd		: 0,
@@ -120,7 +138,7 @@ items =
 	crystal:
 	{
 		name	: "Crystal",
-		desc	: "",
+		desc	: "A whole abyss crystal in great conditions",
 		invImage: sPlaceholder,
 		unlocked: false,
 		qtd		: 0,
@@ -136,7 +154,7 @@ items =
 	greatTreeLeaf:
 	{
 		name	: "Leaf of the Great Tree",
-		desc	: "",
+		desc	: "The greatest and purest form of an abyss crystall",
 		invImage: sPlaceholder,
 		unlocked: false,
 		qtd		: 0,
@@ -159,7 +177,8 @@ weapons =
 	{
 		itemID	: "unarmed",
 		name	: "Unarmed",
-		qtd		: 99,
+		tier	: 1,
+		qtd		: 1,
 		type	: 0,
 		atk		: 1,
 		ammo	: 1,
@@ -219,7 +238,7 @@ enemies =
 		maxHP		: 10,
 		//currentHP	: 10,
 		atk			: 3,
-		drops		: ["nothing","smallCrystal"]
+		drops		: [-1,oSystem.items.crystalfrag]
 	},
 	demon:
 	{
@@ -231,7 +250,7 @@ enemies =
 		maxHP		: 15,
 		//currentHP	: 15,
 		atk			: 5,
-		drops		: ["smallCrystal","smallCrystal","smallCrystal","demonPelt"]
+		drops		: [oSystem.items.crystalfrag,oSystem.items.crystalfrag,oSystem.items.crystalfrag,oSystem.items.demonPelt]
 	},
 }
 
@@ -239,10 +258,58 @@ levels =
 {
 	mines: 
 	{
-		levelID		: "mines",
 		name		: "Mines",
-		ground		:
-		[["nothing","trash","trash","fragCrystal"]],
+		desc		: "",
+		unlocked	: true,
+		next		: "forest",
+		eventPool	: ["item","crystal","encounter","exit"],
+		groundItems	:
+		[[-1,oSystem.items.trash,oSystem.items.trash,oSystem.items.crystalfrag]],
+		enemiesPool:[oSystem.enemies.zombie,oSystem.enemies.zombie,oSystem.enemies.zombie,oSystem.enemies.demon],
+	},
+	forest: 
+	{
+		name		: "Forest",
+		desc		: "",
+		unlocked	: true,
+		next		: "city",
+		eventPool	: ["item","crystal","encounter","exit"],
+		groundItems	:
+		[[-1,oSystem.items.trash,oSystem.items.trash,oSystem.items.crystalfrag]],
+		enemiesPool:[oSystem.enemies.zombie,oSystem.enemies.zombie,oSystem.enemies.zombie,oSystem.enemies.demon],
+	},
+	city: 
+	{
+		name		: "Forest",
+		desc		: "",
+		unlocked	: true,
+		next		: "fields",
+		eventPool	: ["item","crystal","encounter","exit"],
+		groundItems	:
+		[[-1,oSystem.items.trash,oSystem.items.trash,oSystem.items.crystalfrag]],
+		enemiesPool:[oSystem.enemies.zombie,oSystem.enemies.zombie,oSystem.enemies.zombie,oSystem.enemies.demon],
+	},
+	fields: 
+	{
+		name		: "Forest",
+		desc		: "",
+		unlocked	: true,
+		next		: "greatTree",
+		eventPool	: ["item","crystal","encounter","exit"],
+		groundItems	:
+		[[-1,oSystem.items.trash,oSystem.items.trash,oSystem.items.crystalfrag]],
+		enemiesPool:[oSystem.enemies.zombie,oSystem.enemies.zombie,oSystem.enemies.zombie,oSystem.enemies.demon],
+	},
+	greatTree: 
+	{
+		name		: "The Great Tree",
+		desc		: "",
+		unlocked	: true,
+		next		: "forest",
+		eventPool	: ["item","crystal","encounter","exit"],
+		groundItems	:
+		[[-1,oSystem.items.trash,oSystem.items.trash,oSystem.items.crystalfrag]],
+		enemiesPool:[oSystem.enemies.zombie,oSystem.enemies.zombie,oSystem.enemies.zombie,oSystem.enemies.demon],
 	},
 
 

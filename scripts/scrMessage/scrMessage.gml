@@ -1,4 +1,4 @@
-function message_create(_x,_y,_funcs=[["Ok",create_msg]],_msg = "message :3", _name = "message.txt")
+function message_create(_msg = "message :3",_x =256 ,_y= 140,_funcs=[["Ok",-1]], _name = "message.txt")
 {
 	with (instance_create_depth(_x,_y,-99999,oMessage))
 	{
@@ -11,5 +11,5 @@ function message_create(_x,_y,_funcs=[["Ok",create_msg]],_msg = "message :3", _n
 
 function create_msg()
 {
-	message_create(random(600),random(300))
+	message_create(":3",random(600),random(300))
 }
