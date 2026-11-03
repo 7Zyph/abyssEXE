@@ -1,5 +1,6 @@
 draw_sprite_stretched(sBox,0,x,y,windowW,windowH)
 draw_text(x+5,y+3,name)
+//draw_text(x+50,y+3,windowMovetimer)
 draw_text(x+10,y+msg_y,msg)
 
 var button_x = windowW/2 - ((button_size+2)*array_length(funcs))/2

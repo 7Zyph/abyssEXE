@@ -1,4 +1,5 @@
 global.onMessage = true
+windowMovetimer = 0
 //funcs=[["Ok",-1]]
 //name = "Message.txt"
 msg = ":3"
